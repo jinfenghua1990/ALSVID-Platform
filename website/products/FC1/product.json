@@ -1,0 +1,20 @@
+{
+  "platform": "FC",
+  "model": "FC1",
+  "name": "ALSVID FC1",
+  "category": "Folding Carbon E-Bike",
+  "positioning": "Premium European urban mobility",
+  "specifications": {
+    "frame": "Carbon Fiber Folding Frame",
+    "wheel": "20 inch",
+    "motor": "250W Mid Drive",
+    "sensor": "Torque Sensor",
+    "battery": "36V LG",
+    "weight": "15.5 kg"
+  },
+  "future": {
+    "pro": true,
+    "service_system": true,
+    "frame_registration": true
+  }
+}
