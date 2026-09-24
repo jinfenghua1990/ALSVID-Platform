@@ -1,9 +1,10 @@
+import Link from "next/link";
 import { AdminShell } from "@/components/AdminShell";
 import { db } from "@/lib/db";
 
 export default async function ProductsPage() {
   const products = await db.productModel.findMany({
-    include: { platform: true },
+    include: { platform: true, _count: { select: { variants: true, bomItems: true, vehicles: true } } },
     orderBy: { code: "asc" },
   });
 
@@ -18,17 +19,17 @@ export default async function ProductsPage() {
         <div className="table-wrap">
           <table>
             <thead>
-              <tr><th>型号</th><th>平台</th><th>平台含义</th><th>车架</th><th>轮径</th><th>电机</th><th>状态</th></tr>
+              <tr><th>型号</th><th>平台</th><th>平台含义</th><th>SKU</th><th>BOM</th><th>车辆</th><th>状态</th></tr>
             </thead>
             <tbody>
               {products.map((product) => (
                 <tr key={product.id}>
-                  <td><strong>{product.code}</strong></td>
+                  <td><Link className="table-link" href={"/products/" + product.code}><strong>{product.code}</strong></Link></td>
                   <td>{product.platform.code}</td>
                   <td>{product.platform.name}</td>
-                  <td>{product.frameMaterial || "—"}</td>
-                  <td>{product.wheelSize || "—"}</td>
-                  <td>{product.motorPosition || "—"}</td>
+                  <td>{product._count.variants}</td>
+                  <td>{product._count.bomItems}</td>
+                  <td>{product._count.vehicles}</td>
                   <td><span className="status-dot">{product.status}</span></td>
                 </tr>
               ))}

@@ -4,7 +4,8 @@ import { ReactNode } from "react";
 const navigation = [
   { href: "/", label: "工作台" },
   { href: "/products", label: "产品中心" },
-  { href: "#", label: "BOM / 爆炸图" },
+  { href: "/bom", label: "BOM / 爆炸图" },
+  { href: "/parts", label: "配件中心" },
   { href: "#", label: "车辆档案" },
   { href: "#", label: "售后服务" },
   { href: "#", label: "经销商" },
